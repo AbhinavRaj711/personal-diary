@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@600&display=swap');
+
+:root {
+  /* A warm, paper-like background with subtle lines to mimic a diary */
+  --bg-color: #fdfbf7;
+  --bg-pattern: repeating-linear-gradient(transparent, transparent 31px, #e5e5f7 31px, #e5e5f7 32px);
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --text-main: #2d3748;
+  --text-muted: #718096;
+  --primary: #4a5568;
+  --primary-hover: #2d3748;
+  --danger: #e53e3e;
+  --border: #e2e8f0;
+  --radius: 12px;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  background-image: var(--bg-pattern);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+#root { width: 100%; max-width: 900px; }
+
+h1 { text-align: center; font-family: 'Caveat', cursive; font-size: 3rem; color: #2d3748; margin-bottom: 2rem; }
+h3, h4 { font-weight: 600; margin-bottom: 1rem; }
+
+.card {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+  transition: background-color 0.3s ease; /* For mood transitions */
+}
+
+/* --- Mood Backgrounds (Soft & Pastel) --- */
+.mood-happy { background-color: #fffff0; /* Light yellow */ }
+.mood-sad { background-color: #ebf8ff; /* Light blue */ }
+.mood-confused { background-color: #f3e8ff; /* Light purple */ }
+.mood-excited { background-color: #fff5f5; /* Light red/pink */ }
+.mood-angry { background-color: #fed7d7; /* Stronger light red */ }
+
+.header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+
+/* Stats Grid */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.stat-box {
+  background: white; padding: 1rem; border-radius: 8px;
+  border: 1px solid var(--border); text-align: center;
+}
+.stat-box span { display: block; font-size: 0.875rem; color: var(--text-muted); }
+.stat-box strong { font-size: 1.5rem; color: var(--primary); }
+
+/* Forms & Inputs */
+.form-group { margin-bottom: 1rem; }
+label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem; }
+input, textarea, select {
+  width: 100%; padding: 0.75rem; border: 1px solid var(--border);
+  border-radius: 8px; font-family: inherit; transition: all 0.2s; background: white;
+}
+input:focus, textarea:focus, select:focus { outline: none; border-color: #cbd5e0; box-shadow: 0 0 0 3px rgba(226, 232, 240, 0.5); }
+textarea { resize: vertical; min-height: 120px; }
+
+/* Mood Selector */
+.mood-selector { display: flex; gap: 0.5rem; margin-bottom: 1rem; overflow-x: auto; padding-bottom: 0.5rem; }
+.mood-btn {
+  padding: 0.5rem 1rem; border: 1px solid var(--border); border-radius: 20px;
+  background: white; cursor: pointer; font-size: 0.875rem; transition: all 0.2s;
+}
+.mood-btn.active { border-color: var(--primary); background: var(--primary); color: white; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; justify-content: center; align-items: center;
+  padding: 0.75rem 1.5rem; border: none; border-radius: 8px; font-weight: 500;
+  cursor: pointer; transition: all 0.2s ease;
+}
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-hover); }
+.btn-danger { background: white; color: var(--danger); border: 1px solid var(--danger); }
+.btn-danger:hover { background: #fff5f5; }
+
+/* Filter Bar */
+.filter-bar { display: flex; gap: 1rem; margin-bottom: 1rem; align-items: center; background: #f7fafc; padding: 1rem; border-radius: 8px; }
+.filter-bar input { padding: 0.5rem; }
+
+/* Entry Display */
+.entry-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; background: white; }
+.entry-date { font-size: 0.875rem; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+.entry-mood-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.75rem; background: #edf2f7; margin-bottom: 1rem; text-transform: capitalize;}
+.uploaded-image { max-width: 100%; border-radius: 8px; margin-bottom: 1rem; max-height: 400px; object-fit: cover; }
+.entry-actions { display: flex; gap: 0.5rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); }
